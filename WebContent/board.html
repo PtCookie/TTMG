@@ -5,86 +5,26 @@
     <meta charset="UTF-8">
     <title>땅따먹기</title>
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-    <style type="text/css">
-        #img {
-            position: absolute;
-            left: 50px;
-            top: 50px;
-        }
-        
-        #gameBoard {
-            position: absolute;
-            left: 50px;
-            top: 50px;
-        }
-        
-        #log {
-            position: absolute;
-            left: 880px;
-            top: 30px;
-        }
-        
-        #score {
-            color: red;
-        }
-    </style>
+    
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    
     <script src="js/function.js"></script>
-    <script type="application/javascript">
-        $(document).ready(function () {
-            var gameBoard = document.getElementById('gameBoard');
-
-            if (gameBoard.getContext) {
-                var ctx = gameBoard.getContext('2d');
-                var maxLife = 5;
-                var life = maxLife;
-
-                // make cover
-                ctx.fillStyle = "rgb(100,200,100)";
-                ctx.fillRect(0, 0, 800, 600);
-
-                // make position map
-                var map = [];
-                for (var x = 0; x < 800; x += 10) {
-                    for (var y = 0; y < 600; y += 10) {
-                        map.push(mapMaker(x, y, true));
-                    }
-                }
-
-                var trail1 = [pointMaker(200, 200), pointMaker(300, 200), pointMaker(300, 250), pointMaker(250,
-                    250), pointMaker(250, 300), pointMaker(450, 300), pointMaker(450, 400), pointMaker(
-                    200, 400)];
-
-                var trail2 = [pointMaker(200, 200), pointMaker(300, 100), pointMaker(400, 200), pointMaker(300,
-                    300)];
-
-                // remove cover
-                discover(ctx, trail2, map);
-
-                // make score
-                $('#score').text(scoreCheck(map))
-
-                // show life
-                for (var i = 0; i < maxLife; i++) {
-                    if (i < life)
-                        $('#life').append('<img src="img/heart.png" width="20" height="20">');
-                    else
-                        $('#life').append('<img src="img/broken_heart.png" width="20" height="20">');
-                }
-                
-                $('#gameBoard').mousedown(function(event){
-                    x = event.pageX;
-                    y = event.pageY;
-                    console.log(x + ", " + y)
-                    //asdfasdf 
-                })
-            }
-        });
-    </script>
+    <script type="application/javascript" src="js/board.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    
+    
 </head>
 
 <body>
+	<div>
     <img id="img" src="img/AstrologyDL62.jpg" width="800" height="600">
+    <img id="p2" src="img/user.png" class="player"/>
+    </div>
+    
     <canvas id="gameBoard" width="800" height="600"></canvas>
+    
     <h3 id="log">
         SCORE
         <br>
@@ -93,6 +33,12 @@
         <br>
         <span id="life"></span>
     </h3>
+    
+    <table>
+    	<tr><td style="top: 700px; position: absolute;">좌,우<h1 id="print"></h1></td></tr>
+    	<tr><td style="top: 800px; position: absolute;">상,하<h1 id="print2"></h1></td></tr>
+    </table>
+    
 </body>
 
 </html>
