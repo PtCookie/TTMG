@@ -44,8 +44,8 @@
 
                 // make position map
                 var map = [];
-                for (var x = 0; x < 800; x += 10) {
-                    for (var y = 0; y < 600; y += 10) {
+                for (var x = 50; x < 850; x += 10) {
+                    for (var y = 50; y < 650; y += 10) {
                         map.push(mapMaker(x, y, true));
                     }
                 }
@@ -58,7 +58,7 @@
                     300)];
 
                 // remove cover
-                discover(ctx, trail2, map);
+                // discover(ctx, trail2, map);
 
                 // make score
                 $('#score').text(scoreCheck(map))
@@ -72,9 +72,16 @@
                 }
                 
                 $('#gameBoard').mousedown(function(event){
-                    x = event.pageX;
-                    y = event.pageY;
-                    console.log(x + ", " + y)
+                    x = event.pageX - 50;
+                    y = event.pageY - 50;
+
+                    x = x - x % 10;
+                    y = y - y % 10;
+
+                    // console.log(x + ", " + y)
+                    // console.log('map : ' + map[mapFinder(map, y, y)].x + ", " + map[mapFinder(map, y, y)].y)
+                    // console.log('index : ' + mapFinder(map, y, y))
+                    discoverPoint(ctx, x, y, map);
                 })
             }
         });

@@ -26,8 +26,12 @@ function discover(ctx, trails, map) {
     var maxY = trails[0].y;
 
     ctx.beginPath();
+    // start point
     ctx.moveTo(trails[0].x, trails[0].y);
+
+    // make path of points
     $.each(trails, function (index, point) {
+        // set max/min value
         if (point.x >= maxX)
             maxX = point.x;
         if (point.x <= minX)
@@ -41,8 +45,9 @@ function discover(ctx, trails, map) {
     })
     ctx.closePath();
 
-    for (var x = minX; x <= maxX; x++) {
-        for (var y = minY; y <= maxY; y++) {
+    // remove cover
+    for (var x = minX; x <= maxX; x += 10) {
+        for (var y = minY; y <= maxY; y += 10) {
             if (ctx.isPointInPath(x, y)) {
                 ctx.clearRect(x, y, 10, 10);
                 map[mapFinder(map, x, y)] = mapMaker(x, y, false);
@@ -51,10 +56,16 @@ function discover(ctx, trails, map) {
     }
 }
 
-function scoreCheck(map){
+function discoverPoint(ctx, x, y, map) {
+    // remove cover
+    ctx.clearRect(x, y, 10, 10);
+    map[mapFinder(map, x, y)] = mapMaker(x, y, false);
+}
+
+function scoreCheck(map) {
     var score = 0;
-    $.each(map, function(index, seg){
-        if(seg.cover == false)
+    $.each(map, function (index, seg) {
+        if (seg.cover == false)
             score += 10;
     })
 
