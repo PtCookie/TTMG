@@ -6,28 +6,28 @@
 		'40' : false,
 	    };
 	    
-	    var p2x = 0;
-	    var p2y = 0;                    
+	    var p2x = 50; //player start x 좌표
+	    var p2y = 50; //player start y 좌표                   
 	    var speed = 3; //유저 속도
 	    setInterval(function () {
 	        // p2
 	        	
-	        if (keypress['38'] == true && $('#p2').offset().top > 13) { // 위
+	        if (keypress['38'] == true && $('#p2').offset().top > 50) { // 위
 	        	lineTest();
 	        	p2y -= speed;
 	        	lineDraw();
 	        }
-	        if (keypress['40'] == true && $('#p2').offset().top <= 580) { // 아래
+	        if (keypress['40'] == true && $('#p2').offset().top <= 644) { // 아래
 	        	lineTest();
 	        	p2y += speed;
 	        	lineDraw();
 	        }
-	        if (keypress['37'] == true && $('#p2').offset().left >13) { // 왼쪽
+	        if (keypress['37'] == true && $('#p2').offset().left >50) { // 왼쪽
 	        	lineTest();
 	        	p2x -= speed; 
 	        	lineDraw();
 	        }
-	        if (keypress['39'] == true && $('#p2').offset().left <= 780) { // 오른쪽
+	        if (keypress['39'] == true && $('#p2').offset().left <= 843) { // 오른쪽
 	        	lineTest();
 	        	p2x += speed;
 	        	lineDraw();

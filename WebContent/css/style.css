@@ -1,11 +1,13 @@
 @charset "UTF-8";
 #img {
+    z-index: 1;
     position: absolute;
     left: 50px;
     top: 50px;
 }
 
 #gameBoard {
+    z-index: 2;
     position: absolute;
     left: 50px;
     top: 50px;
@@ -22,6 +24,7 @@
 }
 
 .player {
+    z-index: 3;
     position: absolute;
     top: 0;
     left: 0;
@@ -30,6 +33,7 @@
 }
 
 #line {
+    z-index: 3;
     width: 5px;
     height: 5px;
 }
