@@ -50,6 +50,7 @@ $(document).ready(function () {
             // console.log('map : ' + map[mapFinder(map, y, y)].x + ", " + map[mapFinder(map, y, y)].y)
             // console.log('index : ' + mapFinder(map, y, y))
             discoverPoint(ctx, x, y, map);
+            $('#score').text(scoreCheck(map))
         })
     }
 });
