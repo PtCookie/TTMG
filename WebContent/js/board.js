@@ -18,12 +18,12 @@ $(document).ready(function () {
             }
         }
 
-        var trail1 = [pointMaker(200, 200), pointMaker(300, 200), pointMaker(300, 250), pointMaker(250,
-            250), pointMaker(250, 300), pointMaker(450, 300), pointMaker(450, 400), pointMaker(
-            200, 400)];
+        // var trail1 = [pointMaker(200, 200), pointMaker(300, 200), pointMaker(300, 250), pointMaker(250,
+        //     250), pointMaker(250, 300), pointMaker(450, 300), pointMaker(450, 400), pointMaker(
+        //     200, 400)];
 
-        var trail2 = [pointMaker(200, 200), pointMaker(300, 100), pointMaker(400, 200), pointMaker(300,
-            300)];
+        // var trail2 = [pointMaker(200, 200), pointMaker(300, 100), pointMaker(400, 200), pointMaker(300,
+        //     300)];
 
         // remove cover
         // discover(ctx, trail2, map);
