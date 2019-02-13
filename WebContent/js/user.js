@@ -1,67 +1,54 @@
-	$(function() {
-	    var keypress = {
-	    '37' : false,
-	    '38' : false,
-		'39' : false,
-		'40' : false,
-	    };
-	    
-	    var p2x = 0;
-	    var p2y = 0;                    
-	    var speed = 3; //유저 속도
-	    setInterval(function () {
-	        // p2
-	        	
-	        if (keypress['38'] == true && $('#p2').offset().top > 13) { // 위
-	        	lineTest();
-	        	p2y -= speed;
-	        	lineDraw();
-	        }
-	        if (keypress['40'] == true && $('#p2').offset().top <= 580) { // 아래
-	        	lineTest();
-	        	p2y += speed;
-	        	lineDraw();
-	        }
-	        if (keypress['37'] == true && $('#p2').offset().left >13) { // 왼쪽
-	        	lineTest();
-	        	p2x -= speed; 
-	        	lineDraw();
-	        }
-	        if (keypress['39'] == true && $('#p2').offset().left <= 780) { // 오른쪽
-	        	lineTest();
-	        	p2x += speed;
-	        	lineDraw();
-	        }
-	
-	        // update position
-	        $('#p2').css({
-	            top: p2y,
-	            left: p2x
-	        });
-	    }, 5);     
-	    
-	    $(document).keydown(function (e) {
-	        keypress[e.which.toString()] = true;
-	    });
-	    
-	    $(document).keyup(function (e) {
-	        keypress[e.which.toString()] = false;
-	    });
-	
-	});
-	
-	function lineDraw() {
-		var line = $('<img />');
-	    line.attr('src', 'img/line.jpg');
-	    line.attr('id', 'line');
-	    line.css('position', 'absolute');
-	    line.css('left', $('#p2').css('left'));
-	    line.css('top', $('#p2').css('top'));
-	    $('div').append(line);
-	};
-	
-	function lineTest() {
-		$('#print').text($('#p2').offset().left);
-		$('#print2').text($('#p2').offset().top);
-	};
-		
+$(document).ready(function () {
+    if (gameBoard.getContext) {
+        var ctx = gameBoard.getContext('2d');
+        var keypress = {
+            '37': false,
+            '38': false,
+            '39': false,
+            '40': false,
+        };
+
+        $(document).keydown(function (e) {
+            keypress[e.which.toString()] = true;
+        });
+
+        $(document).keyup(function (e) {
+            keypress[e.which.toString()] = false;
+        });
+
+        var p2x = 50;
+        var p2y = 50;
+        var speed = 10; //유저 속도
+
+        var map = [];
+        for (var x = 50; x < 850; x += 10) {
+            for (var y = 50; y < 650; y += 10) {
+                map.push(mapMaker(x, y, true));
+            }
+        }
+
+        var path = [pointMaker(50, 50)];
+
+        position(p2x, p2y);
+
+        setInterval(function () {
+            if (keypress['38'] == true && $('#p2').offset().top > 50) { // 위
+                p2y -= speed;
+                keyProcess(map, path, ctx, p2x, p2y);
+            }
+            if (keypress['40'] == true && $('#p2').offset().top < 640) { // 아래
+                p2y += speed;
+                keyProcess(map, path, ctx, p2x, p2y);
+            }
+            if (keypress['37'] == true && $('#p2').offset().left > 50) { // 왼쪽
+                p2x -= speed;
+                keyProcess(map, path, ctx, p2x, p2y);
+            }
+            if (keypress['39'] == true && $('#p2').offset().left < 840) { // 오른쪽
+                p2x += speed;
+                keyProcess(map, path, ctx, p2x, p2y);
+            }
+
+        }, 25);
+    }
+})

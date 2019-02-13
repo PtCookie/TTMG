@@ -28,9 +28,6 @@ $(document).ready(function () {
         // remove cover
         // discover(ctx, trail2, map);
 
-        // make score
-        $('#score').text(scoreCheck(map))
-
         // show life
         for (var i = 0; i < maxLife; i++) {
             if (i < life)
@@ -50,7 +47,6 @@ $(document).ready(function () {
             // console.log('map : ' + map[mapFinder(map, y, y)].x + ", " + map[mapFinder(map, y, y)].y)
             // console.log('index : ' + mapFinder(map, y, y))
             discoverPoint(ctx, x, y, map);
-            $('#score').text(scoreCheck(map))
         })
     }
 });
