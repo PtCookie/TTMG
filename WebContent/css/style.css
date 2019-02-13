@@ -1,0 +1,33 @@
+@charset "UTF-8";
+        #img {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+        
+        #gameBoard {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+        
+        #log {
+            position: absolute;
+            left: 880px;
+            top: 30px;
+        }
+        
+        #score {
+            color: red;
+        }
+        .player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+        }
+        #line {
+        	width: 5px;
+        	height: 5px;
+        }
