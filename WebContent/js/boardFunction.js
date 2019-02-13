@@ -49,17 +49,19 @@ function discover(ctx, trails, map) {
     for (var x = minX; x <= maxX; x += 10) {
         for (var y = minY; y <= maxY; y += 10) {
             if (ctx.isPointInPath(x, y)) {
-                ctx.clearRect(x, y, 10, 10);
+                ctx.clearRect(x - 50, y - 50, 10, 10);
                 map[mapFinder(map, x, y)] = mapMaker(x, y, false);
             }
         }
     }
+    $('#score').text(scoreCheck(map))
 }
 
 function discoverPoint(ctx, x, y, map) {
     // remove cover
     ctx.clearRect(x, y, 10, 10);
     map[mapFinder(map, x, y)] = mapMaker(x, y, false);
+    $('#score').text(scoreCheck(map))
 }
 
 function scoreCheck(map) {

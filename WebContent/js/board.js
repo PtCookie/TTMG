@@ -28,9 +28,6 @@ $(document).ready(function () {
         // remove cover
         // discover(ctx, trail2, map);
 
-        // make score
-        $('#score').text(scoreCheck(map))
-
         // show life
         for (var i = 0; i < maxLife; i++) {
             if (i < life)
