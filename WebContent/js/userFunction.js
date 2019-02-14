@@ -13,7 +13,6 @@ function position(x, y) {
 function isClosed(path) {
     if (path.length < 4)
         return false;
-
     if (path[0].x == path[path.length - 1].x)
         if (path[0].y == path[path.length - 1].y)
             return true;

@@ -37,6 +37,7 @@ $(document).ready(function () {
             // console.log('map : ' + map[mapFinder(map, x, y)].x + ", " + map[mapFinder(map, x, y)].y)
             // console.log('index : ' + mapFinder(map, x, y))
             // discoverPoint(ctx, x, y, map);
+
         })
     }
 });

@@ -23,7 +23,6 @@ $(document).ready(function () {
         }
 
         lifeChanger();
-
         $(document).keydown(function (e) {
             keypress[e.which.toString()] = true;
         });
@@ -78,7 +77,6 @@ $(document).ready(function () {
                 p2x += speed;
                 keyProcess(map, path, ctx, p2x, p2y);
             }
-
             if ($('#score').text() >= 36000) {
                 $('#mainBody').empty();
                 $('#mainBody').html('<img src="img/win.gif" width="800" height="600">');
@@ -144,6 +142,6 @@ $(document).ready(function () {
         setInterval(function () { // boss setInterval
             draw();
             // console.log('x ' + boss_x + ', y ' + boss_y)
-        }, 25)
+        }, 25);
     }
 })
