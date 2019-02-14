@@ -13,6 +13,13 @@
     top: 50px;
 }
 
+#bossBoard {
+    z-index: 3;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+
 #log {
     position: absolute;
     left: 880px;

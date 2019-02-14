@@ -3,8 +3,6 @@ $(document).ready(function () {
 
     if (gameBoard.getContext) {
         var ctx = gameBoard.getContext('2d');
-        var maxLife = 5;
-        var life = maxLife;
 
         // make cover
         ctx.fillStyle = "rgb(100,200,100)";
@@ -28,25 +26,17 @@ $(document).ready(function () {
         // remove cover
         // discover(ctx, trail2, map);
 
-        // show life
-        for (var i = 0; i < maxLife; i++) {
-            if (i < life)
-                $('#life').append('<img src="img/heart.png" width="20" height="20">');
-            else
-                $('#life').append('<img src="img/broken_heart.png" width="20" height="20">');
-        }
-
         $('#gameBoard').mousedown(function (event) {
-            x = event.pageX - 50;
-            y = event.pageY - 50;
+            x = event.pageX;
+            y = event.pageY;
 
             x = x - x % 10;
             y = y - y % 10;
 
             // console.log(x + ", " + y)
-            // console.log('map : ' + map[mapFinder(map, y, y)].x + ", " + map[mapFinder(map, y, y)].y)
-            // console.log('index : ' + mapFinder(map, y, y))
-            discoverPoint(ctx, x, y, map);
+            // console.log('map : ' + map[mapFinder(map, x, y)].x + ", " + map[mapFinder(map, x, y)].y)
+            // console.log('index : ' + mapFinder(map, x, y))
+            // discoverPoint(ctx, x, y, map);
         })
     }
 });
