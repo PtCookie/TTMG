@@ -13,20 +13,28 @@ function position(x, y) {
 function isClosed(path) {
     if (path.length < 4)
         return false;
-
-    var origin = path[0].x + path[0].y;
-    var last = path[path.length - 1].x + path[path.length - 1].y;
-
     if (path[0].x == path[path.length - 1].x)
         if (path[0].y == path[path.length - 1].y)
             return true;
 }
 
+function isBlocked(map, path) {
+    var origin = mapFinder(map, path[0].x, path[0].y);
+    var last = mapFinder(map, path[path.length - 1].x, path[path.length - 1].y);
+
+    map[origin]
+}
+
 function keyProcess(map, path, ctx, x, y) {
-    position(x, y);
+    // console.log(pointMaker(x, y))
     console.log(path)
+    // console.log(pointMaker(x, y) == path[path.length - 1])
+    // console.log($.inArray(pointMaker(x, y), path))
+    position(x, y);
+
     if (map[mapFinder(map, x, y)].cover) {
-        path.push(pointMaker(x, y));
+        if ($.inArray(pointMaker(x, y), path) === -1)
+            path.push(pointMaker(x, y));
 
         lineDraw(ctx, x - 50, y - 50);
         if (isClosed(path)) {
@@ -34,7 +42,6 @@ function keyProcess(map, path, ctx, x, y) {
                 ctx.clearRect(path[i].x - 50, path[i].y - 50, 10, 10);
             }
             discover(ctx, path, map);
-            console.log(path[0])
             path.length = 0;
         }
     }
